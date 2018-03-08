@@ -1,6 +1,7 @@
 # Generated code
 
 /wwwroot
+/bin
 
 # Created by https://www.gitignore.io/api/node,visualstudiocode
 
