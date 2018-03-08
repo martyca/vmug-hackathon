@@ -2,6 +2,7 @@
 
 /wwwroot
 /bin
+/obj
 
 # Created by https://www.gitignore.io/api/node,visualstudiocode
 
