@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using steve_ui.Hubs;
 
 namespace steve_ui
 {
@@ -22,12 +23,18 @@ namespace steve_ui
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDeveloperExceptionPage();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<MessageHub>("/messagehub");
+            });
 
             app.UseStaticFiles();
             app.UseMvc();
