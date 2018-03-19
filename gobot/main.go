@@ -33,7 +33,7 @@ func main() {
 	}
 
 	mineIpScript := os.Getenv("MINEIP_SCRIPT")
-	if mineScript == "" {
+	if mineIpScript == "" {
 		log.Fatal("MINEIP_SCRIPT not set")
 	}
 

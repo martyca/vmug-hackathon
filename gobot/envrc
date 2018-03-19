@@ -2,3 +2,4 @@ export OBEY_USER=Alexa
 export SLACK_TOKEN=xoxb-326111478835-dIzvaEbhwEVx3fCdOCn4YB53
 export MINE_SCRIPT=./deploy_minecraft.sh
 export KUBE_SCRIPT=./deploy_kube.sh
+export MINEIP_SCRIPT=./minecraft_ip.sh
