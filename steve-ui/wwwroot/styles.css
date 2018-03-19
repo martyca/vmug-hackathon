@@ -48,8 +48,9 @@ body {
     border-radius: 20px;
     background-color: #fff;
     padding: 10px;
-    margin: 5px 0px;
+    margin: 15px 0px;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+    animation: wiggle 4s ease-in-out infinite alternate;
 }
 
 @keyframes roll {
@@ -76,5 +77,16 @@ body {
     }
     100% {
         margin-top: 20px;
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        margin-left: 5px;
+        margin-right: -5px;
+    }
+    100% {
+        margin-left: -5px;
+        margin-right: 5px;
     }
 }
