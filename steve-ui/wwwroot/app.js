@@ -38,13 +38,13 @@ var vm = (function () {
             }
         }
 
-        self.messages.push(data);
+        self.messages.unshift(data);
 
         self.isTalking(true);
         setTimeout(() => { self.isTalking(false); }, 750);
 
         if (self.messages().length > 10) {
-            self.messages.shift();
+            self.messages.pop();
         }
     });
 
