@@ -1,14 +1,16 @@
-(function () {
+var vm = (function () {
     var self = this;
+    self.connection = new signalR.HubConnection('/messagehub');
 
-    console.log("Hen.lo.");
+    self.messages = ko.observableArray();
 
-    let connection = new signalR.HubConnection('/messagehub');
+    // Constructor
 
-    connection.on('send', data => {
-        console.log(data);
+    self.connection.on("send", data => {
+        self.messages.push(data);
     });
 
-    console.log(connection);
-    connection.start().then(() => connection.invoke('send', 'Hello'));
+    self.connection.start() //.then(() => connection.invoke('send', 'Hello'));
 })();
+
+ko.applyBindings(vm, document.getElementById("app"));

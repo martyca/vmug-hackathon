@@ -7,12 +7,20 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet"> 
         <link href="styles.css" rel="stylesheet">
 
-        <script src="signalr.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.2.js"></script>
+        <script src="/signalr.min.js"></script>
 
     </head>
     <body>
-        <h1>Hen.Lo.</h1>
-        
+        <div class="container" id="app">
+            <div class="steve">
+                <img src="steve.png" alt="It me! Steve!" />
+            </div>
+            <div class="output" data-bind="foreach: messages">
+                <div class="message" data-bind="text: $data"></div>
+            </div>
+        </div>
+
         <script src="app.js"></script>
     </body>
 </html>
