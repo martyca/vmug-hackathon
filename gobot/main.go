@@ -93,7 +93,7 @@ func main() {
 							}
 							fmt.Printf("mineScript output: %s", output)
 							rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Minecraft server created: %s ", output), ev.Channel))
-							postToUi(fmt.Sprintf("%v", output))
+							postToUi(fmt.Sprintf("%s", output))
 							postToUi("__roll")
 							postToUi("Minecraft server created!")
 						}()
