@@ -109,7 +109,7 @@ func main() {
 							}
 
 							postToUi(fmt.Sprintf("Minecraft IP: %s", output))
-							rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Minecraft IP: %v", output), ev.Channel))
+							rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Minecraft IP: %s", output), ev.Channel))
 
 						}()
 
