@@ -1,5 +1,5 @@
 export OBEY_USER=Alexa
-export SLACK_TOKEN=xoxb-326111478835-HtISHa0K8znm9ZkYC49iwrX2
+export SLACK_TOKEN=
 export MINE_SCRIPT=
 export KUBE_SCRIPT=./deploy_kube.sh
 export MINEIP_SCRIPT=
