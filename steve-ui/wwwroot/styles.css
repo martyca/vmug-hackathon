@@ -39,6 +39,10 @@ body {
     animation: talk .25s ease-in-out infinite alternate;
 }
 
+.steve > img.roll {
+    animation: roll 1s ease-in-out 1;
+}
+
 .output > .message {
     border: 2px solid #000;
     border-radius: 20px;
@@ -46,6 +50,15 @@ body {
     padding: 10px;
     margin: 5px 0px;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+@keyframes roll {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes talk {
