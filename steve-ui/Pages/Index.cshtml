@@ -14,7 +14,7 @@
     <body>
         <div class="container" id="app">
             <div class="steve">
-                <img src="steve.png" alt="It me! Steve!" />
+                <img src="steve.png" alt="It me! Steve!" data-bind="css: { talk: isTalking() }" />
             </div>
             <div class="output" data-bind="foreach: messages">
                 <div class="message" data-bind="text: $data"></div>

@@ -13,7 +13,8 @@ body {
     background: -moz-linear-gradient(top, #3295ff 0%, #2989d8 77%, #1fc427 78%, #6d360c 83%);
     background: -webkit-linear-gradient(top, #3295ff 0%,#2989d8 77%,#1fc427 78%,#6d360c 83%);
     background: linear-gradient(to bottom, #3295ff 0%,#2989d8 77%,#1fc427 78%,#6d360c 83%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3295ff', endColorstr='#6d360c',GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3295ff', endColorstr='#6d360c',GradientType=0);
+    overflow: hidden;
 }
 
 .container {
@@ -31,6 +32,11 @@ body {
 
 .steve > img {
     width: 100%;
+    animation: wobble 2s ease-in-out infinite alternate;
+}
+
+.steve > img.talk {
+    animation: talk .25s ease-in-out infinite alternate;
 }
 
 .output > .message {
@@ -40,4 +46,22 @@ body {
     padding: 10px;
     margin: 5px 0px;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+@keyframes talk {
+    0% {
+        transform: rotate(2deg);
+    }
+    100% {
+        transform: rotate(-2deg);
+    }
+}
+
+@keyframes wobble {
+    0% {
+        margin-top: 5px;
+    }
+    100% {
+        margin-top: 20px;
+    }
 }
