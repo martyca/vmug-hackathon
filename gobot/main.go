@@ -89,9 +89,13 @@ func main() {
 							output, err := exec.Command(mineScript).CombinedOutput()
 							if err != nil {
 								rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Ouch, creating the minecraft server failed. Error: %v", err), ev.Channel))
+								postToUi(fmt.Sprintf("Ouch, creating the minecraft server failed. Error: %v", err))
 							}
 							fmt.Printf("mineScript output: %s", output)
 							rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Minecraft server created: %s ", output), ev.Channel))
+							postToUi(fmt.Sprintf("%v", output))
+							postToUi("__roll")
+							postToUi("Minecraft server created!")
 						}()
 
 					}
