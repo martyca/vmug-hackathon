@@ -24,17 +24,17 @@ func main() {
 
 	kubeScript := os.Getenv("KUBE_SCRIPT")
 	if kubeScript == "" {
-		log.Fatal("KUBE_SCRIPT not set")
+		log.Println("KUBE_SCRIPT not set")
 	}
 
 	mineScript := os.Getenv("MINE_SCRIPT")
 	if mineScript == "" {
-		log.Fatal("MINE_SCRIPT not set")
+		log.Println("MINE_SCRIPT not set")
 	}
 
 	mineIpScript := os.Getenv("MINEIP_SCRIPT")
 	if mineIpScript == "" {
-		log.Fatal("MINEIP_SCRIPT not set")
+		log.Println("MINEIP_SCRIPT not set")
 	}
 
 	api := slack.New(slackToken)
@@ -65,10 +65,10 @@ func main() {
 				if username == master && strings.Contains(ev.Text, "gobot") {
 					replyText := ""
 
-					if strings.Contains(ev.Text, "deploy") && strings.Contains(ev.Text, "kubernetes") {
+					if strings.Contains(ev.Text, "deploy") && strings.Contains(ev.Text, "kubernetes") && kubeScript != "" {
 						replyText = "Building your kubernetes now"
 						rtm.SendMessage(rtm.NewOutgoingMessage(replyText, ev.Channel))
-						postToUi("Deploying awesome stuff.")
+						postToUi("One kubernetes cluster coming up!")
 						wg.Add(1)
 
 						go func() {
@@ -79,12 +79,15 @@ func main() {
 							fmt.Printf("kubeScript output: %s", output)
 							rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Kube created: %s ", output), ev.Channel))
 
+							postToUi("Kubernetes cluster created!")
+							postToUi("__roll")
+
 							wg.Done()
 						}()
 
 					}
 
-					if strings.Contains(ev.Text, "deploy") && strings.Contains(ev.Text, "minecraft") {
+					if strings.Contains(ev.Text, "deploy") && strings.Contains(ev.Text, "minecraft") && mineScript != "" {
 						wg.Wait()
 						replyText = "One minecraft coming up"
 						rtm.SendMessage(rtm.NewOutgoingMessage(replyText, ev.Channel))
@@ -98,7 +101,6 @@ func main() {
 							}
 							fmt.Printf("mineScript output: %s", output)
 							rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Minecraft server created: %s ", output), ev.Channel))
-							//postToUi(fmt.Sprintf("%s", output))
 
 							postToUi("Minecraft server created!")
 							postToUi("__roll")

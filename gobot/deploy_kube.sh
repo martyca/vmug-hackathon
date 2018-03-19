@@ -1,7 +1,8 @@
 #!/bin/bash
 
-echo "This script will deploy kube when it's ready. For now snooze for a bit"
+#pks login -a https://uaa.pks.pcf.lab.local -u admin -k -p UjfQ_II0P--mGynVk64ssXyUykA3oGeB
+#pks create-cluster vmug --external-hostname vmug.pks.pcf.lab.local --plan small
 
-sleep 10
+sleep 2
 
 exit 0
