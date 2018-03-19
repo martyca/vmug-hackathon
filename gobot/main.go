@@ -32,6 +32,11 @@ func main() {
 		log.Fatal("MINE_SCRIPT not set")
 	}
 
+	mineIpScript := os.Getenv("MINEIP_SCRIPT")
+	if mineScript == "" {
+		log.Fatal("MINEIP_SCRIPT not set")
+	}
+
 	api := slack.New(slackToken)
 	logger := log.New(os.Stdout, "slack-bot: ", log.Lshortfile|log.LstdFlags)
 	slack.SetLogger(logger)
@@ -93,9 +98,19 @@ func main() {
 							}
 							fmt.Printf("mineScript output: %s", output)
 							rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Minecraft server created: %s ", output), ev.Channel))
-							postToUi(fmt.Sprintf("%s", output))
-							postToUi("__roll")
+							//postToUi(fmt.Sprintf("%s", output))
+
 							postToUi("Minecraft server created!")
+							postToUi("__roll")
+
+							output, err = exec.Command(mineIpScript).CombinedOutput()
+							if err != nil {
+								rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Getting IP failed. Error: %v", err), ev.Channel))
+							}
+
+							postToUi(fmt.Sprintf("Minecraft IP: %s", output))
+							rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("Minecraft IP: %v", output), ev.Channel))
+
 						}()
 
 					}
